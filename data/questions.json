@@ -1,0 +1,60 @@
+{
+  "config": {
+    "TIME_PER_QUESTION": 45,
+    "DAILY_GOAL": 20
+  },
+  "categories": {
+    "konstitutsiya": {
+      "title": "Konstitutsiya",
+      "desc": "Davlat tuzilishi, hokimiyat organlari va asosiy huquqlar",
+      "accent": "green",
+      "questions": [
+        {
+          "q": "O'zbekiston Respublikasi Konstitutsiyasi qachon qabul qilingan?",
+          "options": [
+            "1991-yil 31-avgust",
+            "1992-yil 8-dekabr",
+            "1993-yil 1-yanvar",
+            "1995-yil 26-dekabr"
+          ],
+          "correct": 1,
+          "article": "Konstitutsiya, qabul qilinish tarixi",
+          "exp": "Konstitutsiya Oliy Kengash tomonidan 1992-yil 8-dekabrda qabul qilingan."
+        },
+        {
+          "q": "Konstitutsiyaga ko'ra O'zbekiston Respublikasining davlat boshqaruvi shakli qanday?",
+          "options": [
+            "Parlament respublikasi",
+            "Prezidentlik respublikasi",
+            "Konstitutsiyaviy monarxiya",
+            "Federativ davlat"
+          ],
+          "correct": 1,
+          "article": "Konstitutsiya, 1-modda",
+          "exp": "O'zbekiston — suveren, demokratik, huquqiy, ijtimoiy davlat bo'lib, prezidentlik boshqaruv shakliga ega unitar respublikadir."
+        }
+      ]
+    },
+    "mehnat": {
+      "title": "Mehnat kodeksi",
+      "desc": "Ish vaqti, shartnoma, ta'til va xodimlar huquqlari",
+      "accent": "blue",
+      "questions": [
+        {
+          "q": "Oddiy sharoitlarda haftalik ish vaqtining normal davomiyligi necha soatdan oshmasligi kerak?",
+          "options": [
+            "36 soat",
+            "40 soat",
+            "44 soat",
+            "48 soat"
+          ],
+          "correct": 1,
+          "article": "Mehnat kodeksi, ish vaqti bo'limi",
+          "exp": "Normal ish vaqti haftasiga 40 soatdan oshmasligi belgilangan."
+        }
+      ]
+    }
+  },
+  "years": [],
+  "codes": []
+}
