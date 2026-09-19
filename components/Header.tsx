@@ -3,9 +3,17 @@ import { motion, useAnimation } from 'framer-motion'
 
 type Props = {
   palette?: 'green' | 'vivid'
+  /** Hero rasmi manzili. Faylni almashtirsangiz butun saytga o'zgaradi. */
+  imageSrc?: string
 }
 
-export default function Header({ palette = 'green' }: Props) {
+/**
+ * Sahifa tepasidagi to'liq to'rtburchak hero bloki.
+ * - Ekran bo'ylab butun kenglikni egallaydi (g'ildiraksiz, chekkasiz)
+ * - Rasm to'rtburchak shaklida butun bloqni to'ldiradi (object-fit: cover),
+ *   shu sababli hech qachon qiyshaymaydi yoki cho'zilmaydi
+ */
+export default function Header({ palette = 'green', imageSrc = '/images/hero.jpg' }: Props) {
   const controls = useAnimation()
   useEffect(() => {
     controls.start((i: number) => ({
@@ -17,11 +25,11 @@ export default function Header({ palette = 'green' }: Props) {
 
   const palettes: any = {
     vivid: {
-      bg: 'bg-gradient-to-br from-accent1 to-accent2',
+      scrim: 'from-accent1/90 via-accent2/80 to-accent2/70',
       watermark: 'opacity-10 fill-white'
     },
     green: {
-      bg: 'bg-gradient-to-br from-[#123328] to-[#1E5B44]',
+      scrim: 'from-[#0E2B21]/95 via-[#123328]/85 to-[#1E5B44]/70',
       watermark: 'opacity-10 fill-white'
     }
   }
@@ -29,7 +37,21 @@ export default function Header({ palette = 'green' }: Props) {
   const p = palettes[palette]
 
   return (
-    <header className={`relative overflow-hidden ${p.bg} text-white rounded-b-3xl`}>
+    <header className="hero relative w-full overflow-hidden text-white">
+      {/* Rasm: to'rtburchak bo'lib butun hero maydonini to'ldiradi */}
+      <img
+        src={imageSrc}
+        alt=""
+        aria-hidden="true"
+        className="hero-image absolute inset-0 h-full w-full object-cover"
+      />
+
+      {/* Matn o'qilishi uchun ustiga qo'yiladigan rangli qatlam */}
+      <div
+        aria-hidden="true"
+        className={`absolute inset-0 bg-gradient-to-r ${p.scrim}`}
+      />
+
       <svg
         className="absolute right-[-4rem] top-[-3rem] w-48 h-48 transform rotate-[12deg] pointer-events-none"
         viewBox="0 0 100 100"
@@ -41,7 +63,7 @@ export default function Header({ palette = 'green' }: Props) {
         </g>
       </svg>
 
-      <div className="max-w-4xl mx-auto px-6 py-8 sm:py-10 lg:py-14 relative z-10">
+      <div className="relative z-10 mx-auto flex min-h-full max-w-4xl flex-col justify-center px-6 py-16 sm:py-20 lg:py-24">
         <div className="flex items-center justify-between gap-4">
           <motion.div custom={0} initial={{ opacity: 0, y: 8 }} animate={controls} className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-full bg-white/12 flex items-center justify-center text-2xl font-extrabold ring-1 ring-white/10">
@@ -66,7 +88,7 @@ export default function Header({ palette = 'green' }: Props) {
           </motion.div>
         </div>
 
-        <motion.div custom={2} initial={{ opacity: 0, y: 8 }} animate={controls} className="mt-6">
+        <motion.div custom={2} initial={{ opacity: 0, y: 8 }} animate={controls} className="mt-8 sm:mt-10">
           <div className="bg-white/8 backdrop-blur-sm border border-white/10 rounded-2xl p-4 flex items-center justify-between gap-4">
             <div>
               <div className="text-sm font-semibold">Kunlik maqsad</div>
@@ -79,12 +101,6 @@ export default function Header({ palette = 'green' }: Props) {
             </div>
           </div>
         </motion.div>
-      </div>
-
-      <div className="pointer-events-none">
-        <svg className="w-full block" viewBox="0 0 1440 80" preserveAspectRatio="none">
-          <path d="M0 30 C360 100 1080 -40 1440 30 L1440 80 L0 80 Z" className="fill-white/6"></path>
-        </svg>
       </div>
     </header>
   )

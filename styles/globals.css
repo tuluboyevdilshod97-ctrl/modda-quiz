@@ -8,3 +8,30 @@ html, body, #__next {
 body {
   @apply bg-neutral-50 text-gray-900 antialiased;
 }
+
+/*
+ * Hero bloki — to'liq to'rtburchak.
+ * Ekran bo'ylab butun kenglikni va balandlikni egallaydi (chekkasiz, g'ildiraksiz).
+ */
+.hero {
+  width: 100%;
+  min-height: 100svh;
+  /* Eski brauzerlar uchun zaxira qiymat */
+  min-height: 100vh;
+}
+
+@supports (min-height: 100svh) {
+  .hero {
+    min-height: 100svh;
+  }
+}
+
+/*
+ * Rasm hero maydonini to'liq to'ldiradi: to'rtburchak nisbat saqlanadi,
+ * ortiqcha qismi qirqiladi — hech qachon cho'zilmaydi yoki qiyshaymaydi.
+ */
+.hero-image {
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}

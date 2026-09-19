@@ -14,7 +14,7 @@ export default function Home(){
   return (
     <>
       <Header palette="green" />
-      <main className="max-w-2xl mx-auto p-6 -mt-10">
+      <main className="relative z-10 mx-auto -mt-24 max-w-2xl p-6">
         <section className="mb-6">
           <h1 className="text-3xl font-bold">MODDA — Huquq fanidan testlar</h1>
           <p className="text-gray-600 mt-2">Tanlang bo'lim va testni boshlang</p>
