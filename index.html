@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>ЖИНОЯТ КОДЕКСИ — 3D kitob</title>
+<meta name="description" content="Realistik 3D kitob: muqova ochiladi, varaqlar bukilib aylanadi, oltin jilo yaltiraydi." />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>📖</text></svg>" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/build/three.module.js",
+    "three/addons/": "./vendor/three/addons/"
+  }
+}
+</script>
+</head>
+<body>
+
+<canvas id="scene"></canvas>
+
+<div id="loader">
+  <div class="ring"></div>
+  <p>Kitob tayyorlanmoqda…</p>
+</div>
+
+<header class="hud">
+  <h1>ЖИНОЯТ КОДЕКСИ</h1>
+  <p>Ўzbekiston Respublikasining Jinoyat kodeksi · Real vaqtda 3D — muqova ochiladi, varaqlar bukilib aylanadi, oltin jilo yaltiraydi</p>
+</header>
+
+<div id="status" class="status"></div>
+
+<nav class="bar">
+  <button data-mode="auto" class="pill is-active" title="Avtomatik animatsiya">▶ Avto</button>
+  <button data-mode="manual" class="pill" title="Qo'lda boshqarish">✋ Qo'lda</button>
+  <span class="sep"></span>
+  <button id="btn-cover" class="pill" title="Muqovani ochish/yopish">📖 Muqova</button>
+  <button id="btn-prev" class="pill" title="Oldingi varaq">◀</button>
+  <button id="btn-next" class="pill" title="Keyingi varaq">▶</button>
+  <span class="sep"></span>
+  <button id="btn-cover-image" class="pill" title="O'z muqova rasmingizni yuklang">🖼 Rasm yuklash</button>
+  <button id="btn-replay" class="pill" title="Boshidan (Space)">↺</button>
+</nav>
+
+<p id="hint" class="hint">Kitob o‘zi ochiladi, varaqlanadi va yopiladi.</p>
+
+<input id="cover-file" type="file" accept="image/*" hidden />
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
