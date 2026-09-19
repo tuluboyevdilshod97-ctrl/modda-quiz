@@ -11,16 +11,16 @@ body {
 
 /*
  * Hero bloki — to'liq TO'RTBURCHAK.
- * Navbar balandligidan tashqari butun ekranni egallaydi:
- * chekkasi, g'ildiragi (radius) va tashqi o'rab turuvchi bo'shliq yo'q.
+ * Sahifaning eng yuqorisidan boshlanib, butun ekran balandligini egallaydi:
+ * radius, chekka, tashqi bo'shliq YO'Q — "ochiq joy" qolmaydi.
  */
-.hero-rect {
+.hero-full {
   width: 100%;
-  min-height: calc(100vh - 4rem);
+  min-height: 100vh;
 }
 @supports (height: 100svh) {
-  .hero-rect {
-    min-height: calc(100svh - 4rem);
+  .hero-full {
+    min-height: 100svh;
   }
 }
 
