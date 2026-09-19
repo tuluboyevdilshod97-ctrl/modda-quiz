@@ -1,107 +1,74 @@
-import { useEffect } from 'react'
-import { motion, useAnimation } from 'framer-motion'
-
+/**
+ * Sayt tepasi: navbar + to'liq to'rtburchak hero.
+ *
+ * HERO — foydalanuvchi talabiga muvofiq:
+ *  - rasm TO'RTBURCHAK shaklida (radius/checca yo'q),
+ *  - sahifani to'liq to'ldirib turadi (butun kenglik + navbar ostidagi butun ekran balandligi),
+ *  - object-fit: cover tufayli har qanday ekranda nisbat buzilmaydi.
+ * Rasmni almashtirish uchun public/images/hero.jpg faylini almashtiring
+ * yoki `imageSrc` prop orqali boshqa manzil bering.
+ */
 type Props = {
-  palette?: 'green' | 'vivid'
-  /** Hero rasmi manzili. Faylni almashtirsangiz butun saytga o'zgaradi. */
   imageSrc?: string
 }
 
-/**
- * Sahifa tepasidagi to'liq to'rtburchak hero bloki.
- * - Ekran bo'ylab butun kenglikni egallaydi (g'ildiraksiz, chekkasiz)
- * - Rasm to'rtburchak shaklida butun bloqni to'ldiradi (object-fit: cover),
- *   shu sababli hech qachon qiyshaymaydi yoki cho'zilmaydi
- */
-export default function Header({ palette = 'green', imageSrc = '/images/hero.jpg' }: Props) {
-  const controls = useAnimation()
-  useEffect(() => {
-    controls.start((i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.12, duration: 0.45, ease: 'easeOut' }
-    }))
-  }, [controls])
-
-  const palettes: any = {
-    vivid: {
-      scrim: 'from-accent1/90 via-accent2/80 to-accent2/70',
-      watermark: 'opacity-10 fill-white'
-    },
-    green: {
-      scrim: 'from-[#0E2B21]/95 via-[#123328]/85 to-[#1E5B44]/70',
-      watermark: 'opacity-10 fill-white'
-    }
-  }
-
-  const p = palettes[palette]
-
+export default function Header({ imageSrc = '/images/hero.jpg' }: Props) {
   return (
-    <header className="hero relative w-full overflow-hidden text-white">
-      {/* Rasm: to'rtburchak bo'lib butun hero maydonini to'ldiradi */}
-      <img
-        src={imageSrc}
-        alt=""
-        aria-hidden="true"
-        className="hero-image absolute inset-0 h-full w-full object-cover"
-      />
-
-      {/* Matn o'qilishi uchun ustiga qo'yiladigan rangli qatlam */}
-      <div
-        aria-hidden="true"
-        className={`absolute inset-0 bg-gradient-to-r ${p.scrim}`}
-      />
-
-      <svg
-        className="absolute right-[-4rem] top-[-3rem] w-48 h-48 transform rotate-[12deg] pointer-events-none"
-        viewBox="0 0 100 100"
-        aria-hidden
-      >
-        <g stroke="none" className={p.watermark}>
-          <path d="M16 22 C25 16 34 16 43 22 L43 42 C34 36 25 36 16 42 Z" />
-          <circle cx="72" cy="28" r="18" />
-        </g>
-      </svg>
-
-      <div className="relative z-10 mx-auto flex min-h-full max-w-4xl flex-col justify-center px-6 py-16 sm:py-20 lg:py-24">
-        <div className="flex items-center justify-between gap-4">
-          <motion.div custom={0} initial={{ opacity: 0, y: 8 }} animate={controls} className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-full bg-white/12 flex items-center justify-center text-2xl font-extrabold ring-1 ring-white/10">
-              M
+    <>
+      {/* ===== Navbar ===== */}
+      <nav className="sticky top-0 z-40 h-16 w-full border-b border-line bg-cream">
+        <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-4 sm:px-6">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-logo text-xl font-black text-ink shadow-sm">
+              m
             </div>
-            <div>
-              <div className="text-xs uppercase tracking-wider text-white/80">Xush kelibsiz</div>
-              <div className="text-xl sm:text-2xl font-bold leading-tight">MODDA — huquq fanidan testlar</div>
-              <div className="text-sm text-white/80 mt-0.5">Tez va ishonchli testlar, natijalarni tahlil qilish</div>
-            </div>
-          </motion.div>
-
-          <motion.div custom={1} initial={{ opacity: 0, y: 8 }} animate={controls} className="hidden sm:flex gap-3">
-            <div className="bg-white/10 border border-white/8 rounded-xl px-4 py-2 flex flex-col items-center min-w-[84px]">
-              <div className="text-sm font-bold">0</div>
-              <div className="text-xs text-white/70">Ball</div>
-            </div>
-            <div className="bg-white/10 border border-white/8 rounded-xl px-4 py-2 flex flex-col items-center min-w-[84px]">
-              <div className="text-sm font-bold">—</div>
-              <div className="text-xs text-white/70">KUN</div>
-            </div>
-          </motion.div>
-        </div>
-
-        <motion.div custom={2} initial={{ opacity: 0, y: 8 }} animate={controls} className="mt-8 sm:mt-10">
-          <div className="bg-white/8 backdrop-blur-sm border border-white/10 rounded-2xl p-4 flex items-center justify-between gap-4">
-            <div>
-              <div className="text-sm font-semibold">Kunlik maqsad</div>
-              <div className="text-xs text-white/80 mt-1">0 / 20 savol — davom eting</div>
-            </div>
-            <div className="w-48">
-              <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                <div className="h-full bg-white" style={{ width: '0%' }} />
-              </div>
-            </div>
+            <span className="text-xl font-black tracking-tight">MODDA</span>
+            <span className="ml-2 hidden rounded-md border border-line bg-white px-2 py-1 font-mono text-[10px] tracking-widest text-gray-500 sm:inline-block">
+              LEGAL SYSTEM [V2.4]
+            </span>
           </div>
-        </motion.div>
-      </div>
-    </header>
+          <button
+            aria-label="Menyu"
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-line bg-white"
+          >
+            <span className="h-0.5 w-5 bg-ink" />
+            <span className="h-0.5 w-5 bg-ink" />
+            <span className="h-0.5 w-5 bg-ink" />
+          </button>
+        </div>
+      </nav>
+
+      {/* ===== Hero: to'liq to'rtburchak, sahifani to'ldiradi ===== */}
+      <section className="hero-rect relative w-full overflow-hidden bg-ink">
+        <img
+          src={imageSrc}
+          alt="Sud majlislar zali"
+          className="hero-image absolute inset-0 h-full w-full"
+        />
+        {/* matn o'qilishi uchun chap tomondan qoraytiruvchi qatlam */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-black/10"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent"
+        />
+
+        <div className="relative z-10 mx-auto flex h-full min-h-[inherit] max-w-6xl flex-col justify-center px-6 py-16 sm:px-10">
+          <h1 className="max-w-3xl text-5xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-7xl">
+            Huquq
+            <br />
+            fanidan
+            <br />
+            <span className="text-gold">Tayyorgarlik.</span>
+          </h1>
+          <p className="mt-6 max-w-xl text-sm leading-relaxed text-white/90 sm:text-base">
+            Yangi tahrirdagi Konstitutsiya (2023), yangi Mehnat kodeksi, Fuqarolik, Oila va
+            Jinoyat qonunchiligi bo&apos;yicha tuzilgan eng so&apos;nggi test savollari.
+          </p>
+        </div>
+      </section>
+    </>
   )
 }

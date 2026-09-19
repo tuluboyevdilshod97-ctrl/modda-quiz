@@ -32,13 +32,16 @@ Supabase import
 - Use `import-to-supabase.js` script with `SUPABASE_URL` and `SUPABASE_KEY` env vars to import `data/questions.json`.
 
 Design notes
-- Color palette: vivid (purple + blue) as requested.
-- No logo provided — placeholder used.
+- Sahifa "LEGAL SYSTEM [V2.4]" uslubida: krem fon, sariq logo, jigarrang (brand) aksent.
+- Navbar: `components/Header.tsx` — sariq "m" logo, MODDA wordmark, monospace badge, menyu tugmasi.
 
-Hero rasmi (to'liq to'rtburchak)
-- Bosh sahifa tepasidagi hero bloki ekran bo'ylab butun kenglik va balandlikni (`min-height: 100svh`) egallaydi — chekkasi, g'ildiragi yo'q, to'rtburchak shaklida.
-- Rasm fayli: `public/images/hero.jpg` (1672×941). Uni almashtirsangiz saytga avtomatik chiqadi.
-- Rasm `object-fit: cover` bilan hero maydonini to'liq to'ldiradi: nisbat buzilmaydi, ortiqcha qismi qirqiladi.
-- Matn o'qilishi uchun rasm ustiga yashil gradient qatlam (`from-[#0E2B21]/95 → to-[#1E5B44]/70`) qo'yilgan.
-- Kod: `components/Header.tsx` (`imageSrc` prop orqali boshqa rasm berish mumkin) va `styles/globals.css` (`.hero`, `.hero-image`).
+Hero rasmi — TO'LIQ TO'RTBURCHAK, sahifani to'ldiradi
+- Hero bloki (`hero-rect`) butun ekran kengligini va navbar ostidagi butun balandlikni egallaydi: `min-height: calc(100svh - 4rem)`.
+- Radius (g'ildirak), chekka va tashqi bo'shliq YO'Q — rasm to'g'ri to'rtburchak bo'lib sahifani to'ldirib turadi.
+- Rasm fayli: `public/images/hero.jpg` (sud zali). Uni almashtirsangiz saytga avtomatik chiqadi; yoki `<Header imageSrc="..." />` prop orqali boshqa manzil bering.
+- Rasm `object-fit: cover` bilan maydonni to'liq to'ldiradi: nisbat buzilmaydi, ortiqcha qismi qirqiladi.
+- Matn o'qilishi uchun chap tomondan qora gradient qatlam qo'yilgan.
+- Kod: `components/Header.tsx` va `styles/globals.css` (`.hero-rect`, `.hero-image`).
 
+Bloklar
+- "[02] MAVZULASHTIRILGAN BLOKLAR" bo'limi `data/questions.json` dagi kategoriyalardan avtomatik chiziladi; kartani bossangiz test boshlanadi.

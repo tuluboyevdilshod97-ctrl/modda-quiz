@@ -6,32 +6,30 @@ html, body, #__next {
   height: 100%;
 }
 body {
-  @apply bg-neutral-50 text-gray-900 antialiased;
+  @apply bg-cream text-ink antialiased;
 }
 
 /*
- * Hero bloki — to'liq to'rtburchak.
- * Ekran bo'ylab butun kenglikni va balandlikni egallaydi (chekkasiz, g'ildiraksiz).
+ * Hero bloki — to'liq TO'RTBURCHAK.
+ * Navbar balandligidan tashqari butun ekranni egallaydi:
+ * chekkasi, g'ildiragi (radius) va tashqi o'rab turuvchi bo'shliq yo'q.
  */
-.hero {
+.hero-rect {
   width: 100%;
-  min-height: 100svh;
-  /* Eski brauzerlar uchun zaxira qiymat */
-  min-height: 100vh;
+  min-height: calc(100vh - 4rem);
 }
-
-@supports (min-height: 100svh) {
-  .hero {
-    min-height: 100svh;
+@supports (height: 100svh) {
+  .hero-rect {
+    min-height: calc(100svh - 4rem);
   }
 }
 
 /*
- * Rasm hero maydonini to'liq to'ldiradi: to'rtburchak nisbat saqlanadi,
- * ortiqcha qismi qirqiladi — hech qachon cho'zilmaydi yoki qiyshaymaydi.
+ * Rasm to'rtburchak maydonni to'liq to'ldiradi:
+ * nisbat buzilmaydi, ortiqcha qismi qirqiladi (hech qachon cho'zilmaydi).
  */
 .hero-image {
+  display: block;
   object-fit: cover;
   object-position: center;
-  display: block;
 }

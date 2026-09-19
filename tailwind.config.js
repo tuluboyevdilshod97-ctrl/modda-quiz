@@ -4,9 +4,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#0F172A',
-        accent1: '#7C5CFC',
-        accent2: '#2F80ED'
+        cream: '#F7F3EC',
+        ink: '#191512',
+        brand: '#8A6B33',
+        gold: '#E9C87E',
+        logo: '#FFD21E',
+        line: '#E7E0D2'
       }
     }
   },
