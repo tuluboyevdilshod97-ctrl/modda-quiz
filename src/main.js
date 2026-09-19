@@ -159,6 +159,8 @@ controls.maxPolarAngle = Math.PI * 0.495;
 controls.minPolarAngle = 0.1;
 controls.enablePan = false;
 controls.target.set(0, 0.14, 0);
+// Doim yoqilgan lekin faqat foydalanuvchi tegganda update() chaqiriladi —
+// shu orqali kinematik kamera va qo'lda boshqaruv birga ishlaydi.
 
 const clock = new THREE.Clock();
 let userActive = false;
@@ -363,7 +365,6 @@ function tick() {
     userActive = false;
     blend = 0;
   }
-  controls.enabled = userActive;
 
   camAt(ui.mode === 'auto' ? tl : Math.min(tl, 8), _camPos, _camTarget);
 
@@ -435,6 +436,11 @@ document.getElementById('btn-cover-image')?.addEventListener('click', () => file
 fileInput?.addEventListener('change', (e) => {
   const f = e.target.files?.[0];
   if (!f) return;
+  if (!book) {
+    setStatus('Sahna hali tayyor emas…');
+    setTimeout(() => fileInput.click(), 400);
+    return;
+  }
   setStatus('Muqova rasmi yuklanmoqda…');
   const url = URL.createObjectURL(f);
   new THREE.TextureLoader().load(url, (tex) => {
